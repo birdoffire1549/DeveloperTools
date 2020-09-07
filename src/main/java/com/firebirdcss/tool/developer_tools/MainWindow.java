@@ -227,7 +227,10 @@ public class MainWindow {
                 txtStringOutput.setText(Function.makeJsonPretty(txtStringInput.getText()));
                 break;
             default:
-                JOptionPane.showMessageDialog(this.frame, "Oops, Somehow your selected function was invalid; Try again!");
+                JOptionPane.showMessageDialog(
+                        this.frame, 
+                        "Oops, Somehow your selected function was invalid, or it has not yet been implemented; Try again!"
+                );
                 break;
         }
     }
