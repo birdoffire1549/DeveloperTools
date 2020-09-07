@@ -9,12 +9,22 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 /**
+ * This class is a utility method class which contains methods to perform the
+ * main functionality of this application.
+ * 
  * @author Scott Griffis
  * <p>
  * Date: 09/06/2020
  *
  */
 public class Function {
+    /**
+     * This method converts a multi-line string to a single line string.
+     * Line breaks are rendered as a single space.
+     * 
+     * @param string - The given string as {@link String}
+     * @return Returns the converted string as {@link String}
+     */
     public static String multiLineToSingleLine(String string) {
         if (string != null) {
             StringBuilder result = new StringBuilder(string);
@@ -41,6 +51,12 @@ public class Function {
         return null;
     }
     
+    /**
+     * UnEscape the contents of the given string from a Java string perspective.
+     * 
+     * @param string - The given string as {@link String}
+     * @return Returns the escaped string as {@link String}
+     */
     public static String unescapeJavaString(String string) {
         if (string != null) {
             StringBuilder result = new StringBuilder(string);
@@ -90,9 +106,16 @@ public class Function {
         return null;
     }
     
-    public static String makeJsonPretty(String string) {
+    /**
+     * This method is intended to be given a JSON String and then that JSON is rendered
+     * into a more visually appealing format.
+     * 
+     * @param json - The JSON string to be formatted as {@link String}
+     * @return Returns the formatted string as {@link String}
+     */
+    public static String makeJsonPretty(String json) {
         JsonParser parser = new JsonParser();
-        JsonObject jObj = parser.parse(string).getAsJsonObject();
+        JsonObject jObj = parser.parse(json).getAsJsonObject();
         
         Gson gson = (new GsonBuilder()).setPrettyPrinting().create();
         String prettyString = gson.toJson(jObj);

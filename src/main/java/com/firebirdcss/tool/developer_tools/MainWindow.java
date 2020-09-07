@@ -24,6 +24,14 @@ import javax.swing.SpringLayout;
 
 import com.firebirdcss.tool.developer_tools.utils.Function;
 
+/**
+ * This class is the main window of the application.
+ * 
+ * @author Scott Griffis
+ * <p>
+ * Date: 09/07/2020
+ *
+ */
 public class MainWindow {
     private JTextArea txtStringInput;
     private JTextArea txtStringOutput;
@@ -55,7 +63,7 @@ public class MainWindow {
     }
     
     /**
-     * Initialize the contents of the frame.
+     * Initialize the contents of the frame/window.
      */
     private void initialize() {
         frame = new JFrame();
@@ -89,6 +97,9 @@ public class MainWindow {
         springLayout.putConstraint(SpringLayout.WEST, cbxFunctions, 0, SpringLayout.WEST, lblNewLabel);
         frame.getContentPane().add(cbxFunctions);
         
+        /* ******************** *
+         * JButton: btnActivate *
+         * ******************** */
         JButton btnActivate = new JButton("Activate");
         btnActivate.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -99,6 +110,9 @@ public class MainWindow {
         springLayout.putConstraint(SpringLayout.EAST, btnActivate, -10, SpringLayout.EAST, frame.getContentPane());
         frame.getContentPane().add(btnActivate);
         
+        /* ***************** *
+         * JButton: btnReset *
+         * ***************** */
         JButton btnReset = new JButton("Reset");
         btnReset.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -110,6 +124,9 @@ public class MainWindow {
         springLayout.putConstraint(SpringLayout.WEST, btnReset, 0, SpringLayout.WEST, btnActivate);
         frame.getContentPane().add(btnReset);
         
+        /* ******************* *
+         * JButton: btnPasteIn *
+         * ******************* */
         JButton btnPasteIn = new JButton("Paste Input");
         btnPasteIn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -133,17 +150,16 @@ public class MainWindow {
         springLayout.putConstraint(SpringLayout.EAST, btnCopyOut, 0, SpringLayout.EAST, btnActivate);
         frame.getContentPane().add(btnCopyOut);
         
-        /* ********************************************** *
-         * JSplitPane: [LEFT] : JTextArea: txtStringInput *
-         * ********************************************** */
+        /* ************************************************************************** *
+         * JSplitPane: [LEFT] : JScrollPane: jScrollInput : JTextArea: txtStringInput *
+         * ************************************************************************** */
         txtStringInput = new JTextArea();
-        
-        /* ************************************************ *
-         * JSplitPane: [RIGHT] : JTextArea: txtStringOutput *
-         * ************************************************ */
-        txtStringOutput = new JTextArea();
-        
         JScrollPane jScrollInput = new JScrollPane(txtStringInput);
+        
+        /* ***************************************************************************** *
+         * JSplitPane: [RIGHT] : JScrollPane: jScrollOutput : JTextArea: txtStringOutput *
+         * ***************************************************************************** */
+        txtStringOutput = new JTextArea();
         JScrollPane jScrollOutput = new JScrollPane(txtStringOutput);
         
         /* ****************** *
@@ -161,6 +177,8 @@ public class MainWindow {
     
     /**
      * ACTION: btnPasteIn
+     * ******************
+     * This method is used to perform the actions of the "Paste In" Button.
      * 
      */
     private void doPasteIn() {
@@ -183,6 +201,8 @@ public class MainWindow {
     
     /**
      * ACTION: btnCopyOut
+     * ******************
+     * This method is used to perform the actions of the "Copy Out" Button.
      */
     private void doCopyOut() {
         StringSelection stringSelection = new StringSelection(txtStringOutput.getText());
@@ -190,6 +210,11 @@ public class MainWindow {
         clipboard.setContents(stringSelection, null);
     }
     
+    /**
+     * ACTION: doActivate
+     * ******************
+     * This method is used to perform the actions of the "Activate" Button.
+     */
     private void doActivate() {
         switch ((String) cbxFunctions.getSelectedItem()) {
             case "Multi-Line to Single Line":
@@ -207,6 +232,11 @@ public class MainWindow {
         }
     }
     
+    /**
+     * ACTION: doReset
+     * ***************
+     * This method is used to perform the actions of the "Reset" Button.
+     */
     private void doReset() {
         StringSelection stringSelection = new StringSelection(txtStringInput.getText());
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
