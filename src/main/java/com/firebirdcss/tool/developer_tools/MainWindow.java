@@ -100,6 +100,11 @@ public class MainWindow {
         frame.getContentPane().add(btnActivate);
         
         JButton btnReset = new JButton("Reset");
+        btnReset.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                doReset();
+            }
+        });
         springLayout.putConstraint(SpringLayout.NORTH, btnReset, 0, SpringLayout.SOUTH, btnActivate);
         springLayout.putConstraint(SpringLayout.EAST, btnReset, -10, SpringLayout.EAST, frame.getContentPane());
         springLayout.putConstraint(SpringLayout.WEST, btnReset, 0, SpringLayout.WEST, btnActivate);
@@ -190,9 +195,24 @@ public class MainWindow {
             case "Multi-Line to Single Line":
                 txtStringOutput.setText(Function.multiLineToSingleLine(txtStringInput.getText()));
                 break;
+            case "Unescape Java String":
+                txtStringOutput.setText(Function.unescapeJavaString(txtStringInput.getText()));
+                break;
+            case "Make JSON Pretty":
+                txtStringOutput.setText(Function.makeJsonPretty(txtStringInput.getText()));
+                break;
             default:
                 JOptionPane.showMessageDialog(this.frame, "Oops, Somehow your selected function was invalid; Try again!");
                 break;
         }
+    }
+    
+    private void doReset() {
+        StringSelection stringSelection = new StringSelection(txtStringInput.getText());
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(stringSelection, null);
+        
+        txtStringOutput.setText("");
+        txtStringInput.setText("");
     }
 }

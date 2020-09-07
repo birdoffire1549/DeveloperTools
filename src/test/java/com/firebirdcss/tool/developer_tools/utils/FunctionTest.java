@@ -56,7 +56,11 @@ class FunctionTest {
         
         String expected = "There is a couple of words per line.";
         assertEquals(expected, Function.multiLineToSingleLine(initialInput));
-        
+    }
+    
+    @Test
+    void testUnescapeJavaString() {
+        String sample1 = "This is an\b string.\nList:\n\r\tStuff1\fblablabla\"quoted\"\nPath: \\usr\\path\\path";
     }
     
 }
