@@ -43,7 +43,7 @@ jobs:
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-          tag_name: DeveloperTools_V${{ secrets.VERSION_NUMBER }}_Job_${{ github.job }}
+          tag_name: DeveloperTools_V${{ secrets.VERSION_NUMBER }}_RunID_${{ github.run_id }}
           release_name: Release DeveloperTools - Version ${{ secrets.VERSION_NUMBER }}
           #body_path: ./ # <-- Optional, use if release notes are desired
           draft: false
