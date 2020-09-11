@@ -38,7 +38,7 @@ jobs:
         path: ./build/libs/
         
     - name: Get Application Version
-      run: export RELEASE_VERSION=`cat ./appVersion.dat`
+      run: echo "::set-env name=RELEASE_VERSION::$(cat ./appVersion.dat)"
        
     - name: Create Release
       id: create_release
