@@ -36,15 +36,18 @@ jobs:
       with:
         name: developer-tools
         path: ./build/libs/
-    
+        
+    - name: Get Application Version
+      run: export RELEASE_VERSION=`cat ./appVersion.dat`
+       
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-          tag_name: DeveloperTools_V${{ secrets.VERSION_NUMBER }}_RunID_${{ github.run_id }}
-          release_name: Release DeveloperTools - Version ${{ secrets.VERSION_NUMBER }}
+          tag_name: DeveloperTools_V${{ env.RELEASE_VERSION }}
+          release_name: Release DeveloperTools - Version ${{ env.RELEASE_VERSION }}
           #body_path: ./ # <-- Optional, use if release notes are desired
           draft: false
           prerelease: false
