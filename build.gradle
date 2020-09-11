@@ -51,7 +51,7 @@ jar {
                    'Implementation-Version': version,
                    'Implementation-Vendor': 'FirebirdCSS',
                    'Build-Date': (new Date()).format('MM-dd-yyyy HH:mm:ss'),
-                   'Main-Class': 'com.firebirdcss.tool.MainWindow'
+                   'Main-Class': 'com.firebirdcss.tool.developer_tools.MainWindow'
     }
     
     archiveName 'DeveloperTools.jar'
