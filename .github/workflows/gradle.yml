@@ -27,9 +27,8 @@ jobs:
       
     - name: Build with Gradle
       run: ./gradlew build
-    - name: Get Dir
-      run: cd build; cd libs; ls > dir.txt
+      
     - uses: actions/upload-artifact@v2
       with:
-        #name: developer-tools
-        path: ./build/libs/dir.txt #${{ github.workspace }}/developer-tools/build/libs/
+        name: developer-tools
+        path: ./build/libs/
