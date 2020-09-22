@@ -7,7 +7,7 @@ apply plugin: 'eclipse'
 /* **************************** *
  * Custom variable deffinitions *
  * **************************** */
-def appVersion = '1.0.1'
+def appVersion = '1.2.0'
 
 /* ****************************** *
  * Application Definition Section *
@@ -39,7 +39,19 @@ repositories {
  * ************************************ */
 dependencies {
     compile 'com.google.code.gson:gson:2.7'
+    
+    testImplementation(enforcedPlatform("org.junit:junit-bom:5.6.2"))
+    
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    
     testCompile 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+    testImplementation ("junit:junit:4.13")
+    testRuntimeOnly ("org.junit.vintage:junit-vintage-engine") {
+        because 'allows JUnit 3 and 4 tests to run'
+    }
+    testRuntimeOnly ("org.junit.platform:junit-platform-launcher") {
+        because 'allows tests to run from IDEs that bundle older launcher version'
+    }
 }
 
 task exportVersion {
